@@ -1,21 +1,48 @@
 import react from 'react'
-import Saludo from './components/Saludo'
-import Comentario from './components/Comentario'
+import Contact from './components/Contact'
+import Us from './components/Us'
+import Home from './components/Home'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  NavLink
+} from "react-router-dom";
 
 function App() {
-  const comentarioTitle='Este es el título de mi primer comentario'
-  const comentarioImage='https://i.blogs.es/2418f7/googlefotosespacio/450_1000.jpg'
-  const comentarioText='Aquí va el texto del contenido dentro de mi componente'
-
+  
   return (
+    <Router>
     <div className="container mt-5">
-      <h1 className="text-succes">Easy Pros</h1>
-      <Saludo name='Gio' age={25}/>
-      <Saludo name='Leo' age={35}/>
-      <Saludo name='Julian' age={15}/>
-      <Comentario title={comentarioTitle} img={comentarioImage} text={comentarioText}/>
-    </div>
-  );
-}
+    
+    <h6>Menú</h6>
 
-export default App;
+    <div className="btn-gorup">
+    <Link to="/" className="btn btn-dark ml-5">Inicio</Link>
+    <Link to="/us" className="btn btn-dark ml-5"> Nosotros</Link>
+    <NavLink to="/contact" className="btn btn-dark ml-5"  activeClassName="active"> Contacto</NavLink>
+    </div>
+    
+    <Switch>
+    
+    <Route path="/" exact>
+    <Home/>
+    </Route>
+    
+    <Route path="/contact">
+    <Contact/>
+    </Route>
+    
+    <Route path="/us">
+    <Us/>
+    </Route>
+    
+    </Switch>
+    </div>
+    </Router>
+    );
+  }
+  
+  export default App;
+  

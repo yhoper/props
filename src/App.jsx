@@ -1,7 +1,8 @@
 import react from 'react'
 import Contact from './components/Contact'
-import Us from './components/Us'
+import About from './components/About'
 import Home from './components/Home'
+import Aboutdetail from './components/Aboutdetail';
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,12 +21,16 @@ function App() {
 
     <div className="btn-gorup">
     <Link to="/" className="btn btn-dark ml-5">Inicio</Link>
-    <Link to="/us" className="btn btn-dark ml-5"> Nosotros</Link>
+    <Link to="/about" className="btn btn-dark ml-5"> Nosotros</Link>
     <NavLink to="/contact" className="btn btn-dark ml-5"  activeClassName="active"> Contacto</NavLink>
     </div>
     
     <Switch>
-    
+
+    <Route path="/about/:id">
+    <Aboutdetail/>
+    </Route>
+
     <Route path="/" exact>
     <Home/>
     </Route>
@@ -34,8 +39,8 @@ function App() {
     <Contact/>
     </Route>
     
-    <Route path="/us">
-    <Us/>
+    <Route path="/about">
+    <About/>
     </Route>
     
     </Switch>
